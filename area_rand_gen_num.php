@@ -9,8 +9,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+
 <div class="container" style="padding-top:20px">
-<form method="post" class="form-inline" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+<p><mark>Enter positive or negative numbers in both fields to generate between these two</mark></p>
+<form method="POST" class="form-inline" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
 	<div class="form-group">
 		<label for="br1">No.1:</label> <input type="number" class="form-control" name="br1" value="<?php echo (isset($_POST['br1']) ? $_POST['br1'] : ''); ?>">
@@ -21,31 +23,8 @@
 	</div>
 
   <button type="submit" class="btn btn-info" name="submit" value="Submit"><span class="glyphicon glyphicon-cog"></span> Generate</button>  
-</form>
-
-<?php
-	function gen($br1,$br2){
-
-	$br1=(int)$br1;
-	$br2=(int)$br2;
-	
-    $Q=rand($br1,$br2);
-	
-	return $Q;
-	
-}
-
-if(isset($_POST['br1']) && isset($_POST['br2'])){
-	
-	if($_POST['br1']==0 && $_POST['br2']==0){
-		$_POST['br1']=0;
-		$_POST['br2']=0;
-	}
-	
-	echo "<p class='text-info'>"."This is random generated number from ".$_POST["br1"]. " to ".$_POST["br2"].": ".gen($_POST['br1'],$_POST["br2"])."<br>"."</p>";
-}
-
-?>
+</form><br>
+<?php require 'rnd.php';?>
 
 </div>
 </body>
